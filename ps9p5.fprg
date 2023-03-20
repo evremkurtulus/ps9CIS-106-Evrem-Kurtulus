@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="PhotonUser"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-19 09:44:53 PM"/>
+        <attribute name="created" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOTozODo1NiBQTTszMzk2"/>
+        <attribute name="edited" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOTo0NDo1MyBQTTsxOzM0OTg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lname" type="String" array="False" size=""/>
+            <declare name="credits" type="Integer" array="False" size=""/>
+            <declare name="dcode" type="String" array="False" size=""/>
+            <declare name="tuition" type="Real" array="False" size=""/>
+            <output expression="&quot;what's the students last name?&quot;" newline="True"/>
+            <input variable="lname"/>
+            <output expression="&quot;how many credits is &quot;&amp;lname &amp;&quot; taking?&quot;" newline="True"/>
+            <input variable="credits"/>
+            <output expression="&quot;is the student in district or out of district? ('I' or 'O')?&quot;" newline="True"/>
+            <input variable="dcode"/>
+            <call expression="comptuition(dcode,credits)"/>
+            <assign variable="tuition" expression="comptuition(dcode,credits)"/>
+            <output expression="&quot;the student &quot; &amp;lname &amp; &quot;owes &amp; &quot; &amp;ToFixed(tuition,2) &amp;&quot; in tuition.&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="comptuition" type="Real" variable="tuition">
+        <parameters>
+            <parameter name="dcode" type="String" array="False"/>
+            <parameter name="credits" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="tuition" type="Integer" array="False" size=""/>
+            <if expression="dcode == &quot;I&quot;">
+                <then>
+                    <assign variable="tuition" expression="credits*250"/>
+                </then>
+                <else>
+                    <if expression="dcode==&quot;O&quot;">
+                        <then>
+                            <assign variable="tuition" expression="credits*550"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;enter either 'I' or 'O' for district code.&quot;" newline="True"/>
+                            <breakpoint/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

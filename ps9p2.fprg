@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="PhotonUser"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-19 09:13:29 PM"/>
+        <attribute name="created" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswODo1OTozMiBQTTszMzky"/>
+        <attribute name="edited" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOToxMzoyOSBQTTsxOzM0OTc="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lname" type="String" array="False" size=""/>
+            <declare name="numhit" type="Integer" array="False" size=""/>
+            <declare name="atbats" type="Integer" array="False" size=""/>
+            <declare name="batavg" type="Real" array="False" size=""/>
+            <output expression="&quot;what is the players last name?&quot;" newline="True"/>
+            <input variable="lname"/>
+            <output expression="&quot;how many times was the player at bat?&quot;" newline="True"/>
+            <input variable="atbats"/>
+            <output expression="&quot;how many hits did the player have?&quot;" newline="True"/>
+            <input variable="numhit"/>
+            <call expression="compbatavg(numhit,atbats)"/>
+            <assign variable="batavg" expression="compbatavg(numhit,atbats)"/>
+            <output expression="&quot;the player &quot; &amp;lname &amp; &quot;has a batting avg of &quot; &amp;batavg" newline="True"/>
+        </body>
+    </function>
+    <function name="compbatavg" type="Real" variable="batavg">
+        <parameters>
+            <parameter name="numhit" type="Real" array="False"/>
+            <parameter name="atbats" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="batavg" type="Real" array="False" size=""/>
+            <assign variable="batavg" expression="atbats/numhit"/>
+        </body>
+    </function>
+</flowgorithm>

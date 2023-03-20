@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="PhotonUser"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-19 09:25:16 PM"/>
+        <attribute name="created" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOToxNDoxOSBQTTszMzg5"/>
+        <attribute name="edited" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOToyNToxNiBQTTsxOzM0OTY="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="city" type="String" array="False" size=""/>
+            <declare name="miles" type="Integer" array="False" size=""/>
+            <declare name="gallons" type="Integer" array="False" size=""/>
+            <declare name="mpg" type="Real" array="False" size=""/>
+            <declare name="gascost" type="Real" array="False" size=""/>
+            <output expression="&quot;what city did you travel to?&quot;" newline="True"/>
+            <input variable="city"/>
+            <output expression="&quot;how many miles approx traveled?&quot;" newline="True"/>
+            <input variable="miles"/>
+            <output expression="&quot;how many gallons of fuel approx used?&quot;" newline="True"/>
+            <input variable="gallons"/>
+            <call expression="compmpg(miles,gallons)"/>
+            <assign variable="mpg" expression="compmpg(miles,gallons)"/>
+            <call expression="gascost(gallons)"/>
+            <assign variable="gascost" expression="gascost(gallons)"/>
+            <output expression="&quot;when traveling to &quot; &amp;city &amp;&quot; you will travel &quot; &amp;miles &amp; &quot;miles and the gas will cost $&quot; &amp;gascost &amp;&quot;. your miles per gallon are &quot; &amp;mpg" newline="True"/>
+        </body>
+    </function>
+    <function name="compmpg" type="Real" variable="mpg">
+        <parameters>
+            <parameter name="miles" type="Integer" array="False"/>
+            <parameter name="gallons" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="mpg" type="Real" array="False" size=""/>
+            <assign variable="mpg" expression="gallons/miles"/>
+        </body>
+    </function>
+    <function name="gascost" type="Real" variable="gascost">
+        <parameters>
+            <parameter name="gallons" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="gascost" type="Real" array="False" size=""/>
+            <assign variable="gascost" expression="gallons * 2.50"/>
+        </body>
+    </function>
+</flowgorithm>

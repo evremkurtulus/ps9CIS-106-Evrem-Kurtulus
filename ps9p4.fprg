@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="PhotonUser"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-19 09:37:30 PM"/>
+        <attribute name="created" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOToyNTo0NyBQTTszMzky"/>
+        <attribute name="edited" value="UGhvdG9uVXNlcjtFQzJBTUFaLU9TR0dCUEw7MjAyMy0wMy0xOTswOTozNzozMCBQTTsxOzM0OTU="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lname" type="String" array="False" size=""/>
+            <declare name="jcode" type="String" array="False" size=""/>
+            <declare name="hours" type="Integer" array="False" size=""/>
+            <declare name="payrate" type="Integer" array="False" size=""/>
+            <declare name="grosspay" type="Real" array="False" size=""/>
+            <output expression="&quot;what is your last name?&quot;" newline="True"/>
+            <input variable="lname"/>
+            <output expression="&quot;what is your job code? ('A','L', or 'J')&quot;" newline="True"/>
+            <input variable="jcode"/>
+            <output expression="&quot;how many hours did you work?&quot;" newline="True"/>
+            <input variable="hours"/>
+            <call expression="determinepay(jcode)"/>
+            <assign variable="payrate" expression="determinepay (jcode)"/>
+            <call expression="determinegross(hours,payrate)"/>
+            <assign variable="grosspay" expression="determinegross(hours,payrate)"/>
+            <output expression="&quot;your name is &quot;&amp;lname &amp;&quot; and your gross pay is $ &quot; &amp; ToFixed(grosspay,2)" newline="True"/>
+        </body>
+    </function>
+    <function name="determinegross" type="Real" variable="grosspay">
+        <parameters>
+            <parameter name="hours" type="Integer" array="False"/>
+            <parameter name="payrate" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="grosspay" type="Real" array="False" size=""/>
+            <declare name="overtimepay" type="Real" array="False" size=""/>
+            <declare name="overtimehours" type="Real" array="False" size=""/>
+            <if expression="hours&gt;40">
+                <then>
+                    <assign variable="overtimehours" expression="(hours-40)"/>
+                    <assign variable="overtimepay" expression="(overtimehours*payrate)*0.5"/>
+                    <assign variable="grosspay" expression="overtimepay+(hours*payrate)"/>
+                </then>
+                <else>
+                    <assign variable="grosspay" expression="hours*payrate"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="determinepay" type="Real" variable="jcode">
+        <parameters>
+            <parameter name="jcode" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="payrate" type="Integer" array="False" size=""/>
+            <if expression="jcode==&quot;L&quot;">
+                <then>
+                    <assign variable="payrate" expression="25"/>
+                </then>
+                <else>
+                    <if expression="jcode==&quot;A&quot;">
+                        <then>
+                            <assign variable="payrate" expression="30"/>
+                        </then>
+                        <else>
+                            <if expression="jcode==&quot;J&quot;">
+                                <then>
+                                    <assign variable="payrate" expression="50"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;enter correct job code&quot;" newline="True"/>
+                                    <breakpoint/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
